@@ -31,6 +31,8 @@ const user = await User.create({
   password: hashedPassword
 });
 
+console.log("User registered successfully:", user.email)
+
 res.status(201).json({
   message: "User registered successfully",
   user:{
