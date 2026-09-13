@@ -5,6 +5,8 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Notes from "./pages/Notes";
 
+import ProtectedRoute from "./components/ProtectedRoute";
+
 function App() {
   return (
     <BrowserRouter>
@@ -14,12 +16,19 @@ function App() {
 
 
         <Route path="/" element={<Home />} />
-        
+
         <Route path="/register" element={<Register />} />
 
         <Route path="/login" element={<Login />} />
 
-            <Route path="/notes" element={<Notes />} />
+           <Route
+          path="/notes"
+          element={
+            <ProtectedRoute>
+              <Notes />
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
 

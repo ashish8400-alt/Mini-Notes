@@ -1,13 +1,13 @@
 import { useState } from "react";
 import api from "../api/axios";
 import "./Register.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState("");
 
@@ -23,12 +23,16 @@ function Register() {
         password,
       });
 
-      setMessage(response.data.message);
-      setMessageType("success");
+     setMessage(response.data.message);
+setMessageType("success");
 
-      setName("");
-      setEmail("");
-      setPassword("");
+localStorage.setItem("token", response.data.token);
+
+setName("");
+setEmail("");
+setPassword("");
+
+navigate("/notes");
 
     } catch (error) {
       setMessage(

@@ -79,8 +79,45 @@ const deleteNote = async (req, res) => {
 };
 
 
+// UPDATE NOTE
+const updateNote = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { title, content } = req.body;
+
+    const note = await Note.findOne({
+      _id: id,
+      user: req.userId,
+    });
+
+    if (!note) {
+      return res.status(404).json({
+        message: "Note not found",
+      });
+    }
+
+    note.title = title;
+    note.content = content;
+
+    await note.save();
+
+    res.status(200).json({
+      message: "Note updated successfully",
+      note,
+    });
+
+  } catch (error) {
+    console.log("Update Note Error:", error);
+
+    res.status(500).json({
+      message: "Server Error",
+    });
+  }
+};
+
 module.exports = {
   getNotes,
   createNote,
   deleteNote,
+  updateNote,
 };

@@ -20,6 +20,16 @@ export const createNote = (noteData) => {
   });
 };
 
+export const updateNote = (id, noteData) => {
+  const token = localStorage.getItem("token");
+
+  return api.put(`/notes/${id}`, noteData, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
 export const deleteNote = (id) => {
   const token = localStorage.getItem("token");
 

@@ -1,151 +1,571 @@
-.notes-page {
-  min-height: 100vh;
-  background: #f4f6fb;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+.notes-page {
+  min-height: 100vh;
+  background: #f8f9fc;
+  color: #1f2937;
+}
+
+/* ================= NAVBAR ================= */
+
 .notes-navbar {
-  height: 70px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+  height: 76px;
   padding: 0 7%;
 
-  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid #e9eaf0;
+
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .notes-navbar h2 {
-  color: #667eea;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.notes-navbar button {
-  border: none;
-  padding: 10px 18px;
+.user-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
 
-  border-radius: 8px;
+.user-section span {
+  padding: 8px 14px;
 
-  background: #ef4444;
-  color: white;
+  background: #f4f4ff;
+  border: 1px solid #e8e7ff;
+
+  border-radius: 30px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #5557a6;
+}
+
+/* Logout */
+
+.user-section button {
+  padding: 9px 17px;
+
+  border: 1px solid #fee2e2;
+  border-radius: 9px;
+
+  background: white;
+  color: #dc2626;
+
+  font-size: 14px;
+  font-weight: 600;
 
   cursor: pointer;
+
+  transition: all 0.2s ease;
 }
 
+.user-section button:hover {
+  background: #fff1f2;
+  transform: translateY(-1px);
+}
+
+/* ================= MAIN ================= */
+
 .notes-container {
-  max-width: 900px;
+  width: 88%;
+  max-width: 1150px;
 
-  margin: auto;
-
-  padding: 50px 20px;
+  margin: 45px auto;
 }
 
 .notes-container h1 {
-  margin-bottom: 25px;
+  font-size: 34px;
+  font-weight: 800;
+
+  letter-spacing: -1px;
+
+  margin-bottom: 8px;
 }
 
+.notes-container h1::after {
+  content: "Keep your thoughts organized and easy to find.";
+
+  display: block;
+
+  margin-top: 8px;
+
+  font-size: 14px;
+  font-weight: 400;
+
+  letter-spacing: 0;
+
+  color: #8a8f9d;
+}
+
+/* ================= CREATE NOTE ================= */
+
 .note-form {
-  background: white;
+  margin-top: 30px;
+  margin-bottom: 35px;
 
   padding: 25px;
 
-  border-radius: 15px;
+  background: white;
 
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e9eaf0;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 10px 30px rgba(30, 35, 90, 0.05);
 
   display: flex;
   flex-direction: column;
 
-  gap: 15px;
+  gap: 14px;
 }
 
 .note-form input,
 .note-form textarea {
-  padding: 13px;
+  width: 100%;
 
-  border: 1px solid #ddd;
+  padding: 14px 16px;
 
-  border-radius: 8px;
+  border: 1px solid #e1e3ea;
+  border-radius: 11px;
+
+  background: #fafbfc;
 
   font-size: 15px;
+  color: #222;
 
   outline: none;
+
+  transition: 0.2s;
 }
 
 .note-form textarea {
   min-height: 120px;
-
   resize: vertical;
 }
 
+.note-form input::placeholder,
+.note-form textarea::placeholder {
+  color: #a0a4ae;
+}
+
+.note-form input:focus,
+.note-form textarea:focus {
+  background: white;
+
+  border-color: #7779e8;
+
+  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+/* Add button */
+
 .note-form button {
-  padding: 13px;
+  align-self: flex-start;
+
+  padding: 12px 22px;
 
   border: none;
+  border-radius: 10px;
 
-  border-radius: 8px;
-
-  background: #667eea;
+  background: linear-gradient(135deg, #667eea, #764ba2);
 
   color: white;
 
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
 
   cursor: pointer;
+
+  box-shadow: 0 7px 18px rgba(102, 126, 234, 0.25);
+
+  transition: all 0.2s ease;
 }
+
+.note-form button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 24px rgba(102, 126, 234, 0.32);
+}
+
+/* ================= MESSAGE ================= */
 
 .success-message {
-  color: #16a34a;
+  display: inline-block;
 
-  margin: 20px 0;
+  padding: 10px 15px;
+
+  margin-bottom: 22px;
+
+  border-radius: 9px;
+
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+
+  color: #15803d;
+
+  font-size: 14px;
+  font-weight: 600;
 }
 
-.notes-list {
-  margin-top: 30px;
+/* ================= NOTES GRID ================= */
 
+.notes-list {
   display: grid;
 
   grid-template-columns: repeat(
-    auto-fit,
-    minmax(250px, 1fr)
+    auto-fill,
+    minmax(280px, 1fr)
   );
 
-  gap: 20px;
+  gap: 22px;
 }
 
+/* ================= NOTE CARD ================= */
+
 .note-item {
+  position: relative;
+
+  padding: 24px;
+
   background: white;
 
-  padding: 20px;
+  border: 1px solid #e9eaf0;
 
-  border-radius: 15px;
+  border-radius: 17px;
 
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
+  box-shadow:
+    0 8px 25px rgba(30, 35, 90, 0.045);
+
+  transition: all 0.25s ease;
+
+  overflow: hidden;
+}
+
+/* Small purple line */
+
+.note-item::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #667eea,
+    #764ba2
+  );
+}
+
+.note-item:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 16px 35px rgba(30, 35, 90, 0.1);
 }
 
 .note-item h3 {
-  margin-bottom: 10px;
+  margin-top: 5px;
+  margin-bottom: 11px;
+
+  font-size: 19px;
+  font-weight: 750;
+
+  color: #252733;
+
+  word-break: break-word;
 }
 
-.note-item p {
-  color: #666;
+.note-item > p {
+  min-height: 55px;
 
-  line-height: 1.5;
+  margin-bottom: 23px;
+
+  color: #777d8c;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  word-break: break-word;
 }
 
-.note-item button {
-  margin-top: 15px;
+/* ================= CARD BUTTONS ================= */
 
-  padding: 8px 15px;
+.note-item > button {
+  padding: 9px 15px;
 
-  border: none;
+  border-radius: 8px;
 
-  border-radius: 7px;
-
-  background: #ef4444;
-
-  color: white;
+  font-size: 13px;
+  font-weight: 700;
 
   cursor: pointer;
+
+  transition: all 0.2s ease;
+
+  margin-right: 8px;
+}
+
+/* Edit */
+
+.note-item > button:first-of-type {
+  border: 1px solid #dddfff;
+
+  background: #f4f5ff;
+
+  color: #5557c7;
+}
+
+.note-item > button:first-of-type:hover {
+  background: #e9eaff;
+
+  transform: translateY(-1px);
+}
+
+/* Delete */
+
+.note-item > button:last-of-type {
+  border: 1px solid #ffd5d5;
+
+  background: #fff5f5;
+
+  color: #dc3d3d;
+}
+
+.note-item > button:last-of-type:hover {
+  background: #ffe7e7;
+
+  transform: translateY(-1px);
+}
+
+/* ================= EDIT FORM ================= */
+
+.note-item form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  margin-top: 5px;
+}
+
+.note-item form input,
+.note-item form textarea {
+  width: 100%;
+
+  padding: 12px 13px;
+
+  border: 1px solid #dddfe7;
+  border-radius: 9px;
+
+  background: #fafbfc;
+
+  font-size: 14px;
+
+  outline: none;
+}
+
+.note-item form textarea {
+  min-height: 105px;
+  resize: vertical;
+}
+
+.note-item form input:focus,
+.note-item form textarea:focus {
+  background: white;
+
+  border-color: #667eea;
+
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Save */
+
+.note-item form button {
+  padding: 10px 15px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #22c55e;
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.note-item form button:hover {
+  background: #16a34a;
+
+  transform: translateY(-1px);
+}
+
+/* Cancel */
+
+.note-item form button[type="button"] {
+  background: #f1f2f5;
+
+  color: #555;
+
+  border: 1px solid #e1e2e7;
+}
+
+.note-item form button[type="button"]:hover {
+  background: #e5e7eb;
+}
+
+/* ================= EMPTY NOTES ================= */
+
+.notes-list:empty::after {
+  content: "No notes yet. Create your first note ✨";
+
+  grid-column: 1 / -1;
+
+  padding: 50px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 2px dashed #dddfea;
+
+  border-radius: 16px;
+
+  color: #9296a3;
+
+  font-size: 15px;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 650px) {
+
+  .notes-navbar {
+    height: 68px;
+    padding: 0 5%;
+  }
+
+  .notes-navbar h2 {
+    font-size: 18px;
+  }
+
+  .user-section {
+    gap: 7px;
+  }
+
+  .user-section span {
+    display: none;
+  }
+
+  .user-section button {
+    padding: 8px 12px;
+  }
+
+  .notes-container {
+    width: 92%;
+    margin: 30px auto;
+  }
+
+  .notes-container h1 {
+    font-size: 28px;
+  }
+
+  .notes-list {
+    grid-template-columns: 1fr;
+  }
+
+  .note-form {
+    padding: 20px;
+  }
+
+  .note-item {
+    padding: 20px;
+  }
+}
+
+/* ================= SEARCH ================= */
+
+.search-input {
+  width: 100%;
+
+  margin-top: 25px;
+  margin-bottom: 5px;
+
+  padding: 14px 17px;
+
+  border: 1px solid #e1e3ea;
+  border-radius: 11px;
+
+  background: white;
+
+  font-size: 15px;
+  color: #222;
+
+  outline: none;
+
+  transition: 0.2s;
+
+  box-shadow: 0 5px 20px rgba(30, 35, 90, 0.03);
+}
+
+.search-input::placeholder {
+  color: #a0a4ae;
+}
+
+.search-input:focus {
+  border-color: #7779e8;
+
+  box-shadow:
+    0 0 0 4px rgba(102, 126, 234, 0.1);
+}
+
+
+/* ================= NO NOTES ================= */
+
+.no-notes {
+  grid-column: 1 / -1;
+
+  padding: 50px;
+
+  text-align: center;
+
+  background: white;
+
+  border: 2px dashed #dddfea;
+
+  border-radius: 16px;
+
+  color: #9296a3;
+
+  font-size: 15px;
 }
